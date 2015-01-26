@@ -1,15 +1,19 @@
 ---
 driver:
+  network:
+  - ["private_network", {ip: "192.168.33.51"}]
+  customize:
+    memory: 2048
   name: vagrant
 
 provisioner:
-  name: chef_solo
+  name: chef_zero
 
 platforms:
-  - name: ubuntu-12.04
-  - name: centos-6.4
+  - name: ubuntu-14.04
 
 suites:
   - name: default
     run_list:
+      - recipe[df_box_rails::default]
     attributes:
